@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             'secret_key'    => '3745821',
             'email'         => 'admin@gmail.com',
             'password'      => '$2y$10$pmNHwQhyhP.dmPUxVMXzQOtB9IUo3q5NYqJSpaAvGEMI8aK5eyVx6',
-            'status'        => '1',
+            'status'        => '2',
         ]); 
         DB::table('permission')->insert([
             'display_name'      => 'Quản lí nhân viên',
@@ -32,5 +32,13 @@ class DatabaseSeeder extends Seeder
             'display_name'      => 'Quản lí sản phẩm',
             'name'              => 'product',
         ]);
+        DB::table('manager_info')->insert([
+            'manager_id'    => '1',
+            'name'         => 'super admin',
+            'telephone'         => '0',
+            'address'         => '0',
+            'code'         => '0',
+            'status'        => '1',
+        ]); 
     }
 }
