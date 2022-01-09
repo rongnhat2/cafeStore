@@ -1,0 +1,94 @@
+.calendar-wrapper{
+	width: 100%;
+}
+.calendar-wrapper .calendar-control{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 60px;
+}
+.calendar-wrapper .calendar-control .control-button{
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 24px;
+}
+.calendar-wrapper .calendar-control .time-render{
+	font-size: 28px;
+	font-weight: bold;
+}
+.calendar-wrapper .calendar-main{
+	width: 100%;
+	font-size: 24px;
+}
+
+
+.calendar-wrapper .calendar-main .day-header{
+	width: 100%;
+	display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+ 	margin: 0 0 10px 0;
+ 	grid-gap: 8px;
+}
+.calendar-wrapper .calendar-main .day-header .head-item:first-child {
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+.calendar-wrapper .calendar-main .day-header .head-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px 0; 
+}
+.calendar-wrapper .calendar-main .day-wrapper{
+	width: 100%;
+	padding: 0 20px;
+	display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+ 	grid-gap: 8px;
+}
+.calendar-wrapper .calendar-main .day-wrapper::before{
+    content: '';
+    width: 0;
+    padding-bottom: 100%;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+}
+.calendar-wrapper .calendar-main .day-wrapper .days-item:first-child {
+    grid-row-start: 1;
+    grid-column-start: 1;
+}
+.calendar-wrapper .calendar-main .day-wrapper .days-item{
+	border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 10px;
+}
+.calendar-wrapper .calendar-main .day-wrapper .days-item .title{
+	font-size: 14px;
+}
+.calendar-wrapper .calendar-main .day-wrapper .days-item .staff-list-item{
+	font-size: 10px;
+	display: block;
+	margin: 0 0 5px 0;
+}
+.calendar-wrapper .calendar-main .day-wrapper .days-item .staff-list-item .staff-item{
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+.calendar-wrapper .calendar-main .day-wrapper .days-item.today{
+	background-color: #d2ffb3;
+}
+.calendar-wrapper .calendar-main .day-wrapper .days-item.selected{
+	background-color: #f6ffb3;
+}
+
+
+
