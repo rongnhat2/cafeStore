@@ -183,14 +183,14 @@ const Template = {
                         <div class="form-group col-md-12">
                             <label class="d-flex">Đơn hàng</label>
                             <div class="order-list m-b-10"></div>
-                            <div class="order-action d-flex justify-content-end m-b-20">
+                            <div class="order-action justify-content-end m-b-20">
                                 <button class="btn btn-success create-product">Tạo mới</button>
                             </div>
                             <div class="order-action m-b-20">
                                 <h4 class="text-center total_prices_data"></h4>
                                 <button class="btn btn-success w-100 sum-price-product">Tổng</button>
                             </div>
-                            <div class="order-action d-flex justify-content-end">
+                            <div class="order-action justify-content-end">
                                 <button class="btn btn-primary w-100 price-order" atr="Price">Thanh toán</button>
                             </div>
                         </div>  

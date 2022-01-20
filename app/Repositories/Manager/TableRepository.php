@@ -37,9 +37,13 @@ class TableRepository extends BaseRepository implements RepositoryInterface
         $data["table"] = DB::select($sql);
         $data["order"] = null;
         if (count($data["table"]) != 0) {
-            $sql_order = "SELECT * 
-                FROM sub_order 
-                WHERE order_id = ".$data["table"][0]->id;
+            $sql_order = "SELECT sub_order.*, 
+                                product.name as product_name, 
+                                product.prices as product_prices
+                            FROM sub_order 
+                            LEFT JOIN product
+                            ON product.id = sub_order.product_id
+                            WHERE sub_order.order_id = ".$data["table"][0]->id;
             $data["order"] = DB::select($sql_order);
         }
         return $data;

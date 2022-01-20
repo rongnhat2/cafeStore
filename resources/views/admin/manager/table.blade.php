@@ -61,23 +61,7 @@
             </div>
         </div>
     </div>            
-</div>
-<div class="modal modal-right fade quick-view" id="update-modal-side">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header justify-content-between align-items-center">
-                <h5 class="modal-title"></h5>
-            </div>
-            <div class="modal-body scrollable">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default modal-action close-modal m-r-10"> </button>
-                <button type="button" class="btn btn-primary modal-action push-modal" atr="Push"> </button>
-            </div>
-        </div>
-    </div>            
-</div>
+</div> 
 <div class="modal modal-right fade quick-view" id="delete-modal-side">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -99,6 +83,6 @@
 
 @section('js')
     
-    <script src="{{ asset('manager/assets/js/page/table.js') }}"></script>
+    <script src="{{ asset('manager/assets/js/page/admintable.js') }}"></script>
 
 @endsection()

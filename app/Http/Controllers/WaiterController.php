@@ -41,6 +41,7 @@ class WaiterController extends Controller
 
     public function get_one($id){
         $data = $this->table->get_one($id);
+        return $data;
         return $this->table->send_response(201, $data, null);
     }
     public function store(Request $request){
@@ -54,7 +55,7 @@ class WaiterController extends Controller
         $order_new = $this->order_time->create($data_create);
         foreach (explode(' | ', $request->data_items) as $key => $value) {
             $data_sub = explode('~', $value);
-            $this->order_sub->create(["product_id" => $order_new->id, "order_id" => $data_sub[0], "quantity" => $data_sub[1]] );
+            $this->order_sub->create(["product_id" => $data_sub[0], "order_id" => $order_new->id, "quantity" => $data_sub[1]] );
         };
         $this->table->update(["status" => 0], $request->data_id);
 

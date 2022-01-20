@@ -62,13 +62,12 @@ const View = {
     tableSize: {
         render(data){
             var status = ["onwork", "empty", "full"];
+            $(".table-list").find(".table-item-wrapper").remove()
             data.map(v => {
-                $(".table-list").find(".table-item-wrapper").remove()
                 $(".table-list").append(`
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 table-item-wrapper modal-side-control" atr="View" data-id="${v.id}">
                         <div class="table-item ${status[v.status]}">
                             <div class="table-name">${v.name} - ${v.size} chỗ</div>
-                            <div class="table-total">${v.total_prices.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + "đ"}</div>
                         </div>
                     </div>
                 `)
@@ -79,8 +78,37 @@ const View = {
         Update: {
             resource: '#update-modal-side',
             setDefaul(){ this.init();  },
-            setVal(id){ 
-                $(this.resource).find('.data-id').val(id)
+            setVal(id, data){ 
+                $('.order-list').find(".sub-item").remove()
+                $(".total_prices_data").text("")
+                if (data.table.length > 0) {
+                    if (data.table[0].status == 0) {
+                        $(".order-action").css({
+                            "display": "none"
+                        })
+                    }else{
+                        $(".order-action").css({
+                            "display": "block"
+                        })
+                    }
+                }else{
+                    $(".order-action").css({
+                        "display": "block"
+                    })
+                }
+                if (data.order) {
+                    data.order.map(v => {
+                        $('.order-list').append(`<div class="sub-item row m-b-10">
+                            <div class="col-md-6 p-l-15 p-r-5">
+                                <input type="text" readonly class="form-control data-quantity w-100" value="${v.product_name}-${v.product_prices}">
+                            </div>
+                            <div class="col-md-6 p-l-5 p-r-5">
+                                <input type="text" readonly class="form-control data-quantity w-100" value="${v.quantity}">
+                            </div>
+                        </div>`)
+                    })
+                }
+                $(this.resource).find('.data-id').val(id);
             },
             textDefaul(){
                 ViewIndex.textCount.defaul(this.resource +' .data-name', this.resource + ' .data-name-return', 254)
@@ -161,7 +189,7 @@ const View = {
 
         Api.Waiter.getOne(id)
             .done(res => {
-                View.modalsSide.Update.setVal(id);
+                View.modalsSide.Update.setVal(id, res);
                 View.modalsSide.Update.onPrice("Price", (fd) => {
                     ViewIndex.helper.showToastProcessing('Processing', 'Đang tạo!');
                     Api.Waiter.Store(fd)
@@ -177,7 +205,7 @@ const View = {
                     ViewIndex.helper.showToastProcessing('Processing', 'Đang tạo!');
                     Api.Waiter.Update(fd)
                         .done(res => {
-                            ViewIndex.helper.showToastSuccess('Success', 'Thanh toán thành công !');
+                            ViewIndex.helper.showToastSuccess('Success', 'Cập nhật thành công !');
                             getData();
                         })
                         .fail(err => { ViewIndex.helper.showToastError('Error', 'Có lỗi sảy ra'); })

@@ -109,6 +109,7 @@
             </div>
         </div>            
     </div>
+    @include('admin.toast')
 
     
     <!-- Core Vendors JS -->
